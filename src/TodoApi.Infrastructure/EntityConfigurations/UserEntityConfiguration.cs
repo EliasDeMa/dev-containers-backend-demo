@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MigrationsDemo.Database;
+using TodoApi.Infrastructure.Database;
 
-namespace MigrationsDemo.EntityConfigurations
+namespace TodoApi.Infrastructure.EntityConfigurations
 {
     public class UserEntityConfiguration : IEntityTypeConfiguration<User>
     {

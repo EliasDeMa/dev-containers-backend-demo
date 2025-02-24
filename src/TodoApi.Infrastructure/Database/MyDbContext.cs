@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MigrationsDemo.Database;
+namespace TodoApi.Infrastructure.Database;
 
 public class MyDbContext : DbContext
 {
