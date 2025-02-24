@@ -22,14 +22,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("/users", async (MyDbContext dbContext) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/users", (MyDbContext dbContext) =>
-{
-    return dbContext.Users.ToList();
+    return await dbContext
+        .Users
+        .Include(u => u.TodoItems)
+        .ToListAsync();
 });
 
 app.MapPost("/users", async (MyDbContext dbContext, User user) =>
