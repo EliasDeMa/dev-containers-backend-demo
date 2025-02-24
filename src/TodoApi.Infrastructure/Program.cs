@@ -12,6 +12,7 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+// get argument from command line
 
 
 // Configure the HTTP request pipeline.
@@ -22,5 +23,13 @@ if (app.Environment.IsDevelopment())
     // run migrations
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<MyDbContext>();
-    dbContext.Database.Migrate();
+
+    if (args.Contains("delete")) 
+    {
+        dbContext.Database.ExecuteSqlRaw("DROP SCHEMA public CASCADE; CREATE SCHEMA public;");
+    }
+    else 
+    {
+        dbContext.Database.Migrate();
+    }
 }
