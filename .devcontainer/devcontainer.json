@@ -14,18 +14,14 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-dotnettools.csharp"
-			]
+                "ms-dotnettools.csharp",
+                "ms-dotnettools.csdevkit"
+            ]
 		}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [5000, 5001, 5432, 5259],
-	// "portsAttributes": {
-	//		"5001": {
-	//			"protocol": "https"
-	//		}
-	// }
 
     "postCreateCommand": "dotnet run --project src/TodoApi.Infrastructure/"
 }
